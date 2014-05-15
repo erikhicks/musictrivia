@@ -1,0 +1,21 @@
+{
+    "format": {
+        "filename": "/Users/hickse/Music/iTunes/iTunes Media/Music/'Weird Al' Yankovic/Straight Outta Lynwood/White & Nerdy.mp3",
+        "nb_streams": 2,
+        "nb_programs": 0,
+        "format_name": "mp3",
+        "format_long_name": "MP2/3 (MPEG audio layer 2/3)",
+        "start_time": "0.000000",
+        "duration": "170.318367",
+        "size": "4162996",
+        "bit_rate": "195539",
+        "probe_score": 51,
+        "tags": {
+            "genre": "Rap / Hip-Hop",
+            "TIT1": "The Lonely Island Radio",
+            "artist": "'Weird Al' Yankovic",
+            "title": "White & Nerdy",
+            "album": "Straight Outta Lynwood"
+        }
+    }
+}
