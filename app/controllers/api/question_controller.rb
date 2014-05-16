@@ -1,27 +1,39 @@
 class Api::QuestionController < ActionController::Base
   
-  # Generates a question with random criteria
+  # Generates a question with given criteria
 	def new
     question = nil
-    artist = nil
-    album = nil
     song = nil
 
     question_type = TriviaQuestionType.model("Artist").property("name").first
-    song = Song.first(:offset => rand(Song.count))
-    clip = song.create_clip
     
-    if question_type
-      question = TriviaQuestion.new(
-        uuid: SecureRandom.uuid,
-        trivia_question_type: question_type,
-        album: album,
-        artist: artist,
-        song: song
-      )
+    # Default is random
+    if (params[:year] && (1960..2013).include?(params[:year].to_i))
+      chart_results = ChartTop100Year.year(params[:year].to_i).available_songs
+      if chart_results.length > 0
+        song = chart_results.sample.song
+      end
+    else
+      song = Song.first(:offset => rand(Song.count))
+    end
+    
+    clip = song.create_clip
+    output_question(question_type, song)
+  end
+
+  private
+
+  def output_question(question_type, song)
+    if question_type && song
+      question = TriviaQuestion.new()
+      question.uuid = SecureRandom.uuid
+      question.trivia_question_type = question_type
+      question.album = song.album
+      question.artist = song.artist
+      question.song = song
     end
 
-    if question
+    if question && song
      question.save
 
      render json: {

@@ -18,13 +18,13 @@ class Song < ActiveRecord::Base
 
     if File.exists? read_path
       puts "Converting #{read_path}"
-      cmd = "ffmpeg -y -i \"#{read_path}\" -ss 00:00:30 -t 10 \"#{temp_path}\""
+      cmd = "ffmpeg -y -i \"#{read_path}\" -ss 00:00:30 -t 20 \"#{temp_path}\""
       convert = `#{cmd}`
     end
 
     if File.exists? temp_path
       puts "Clipping and saving to #{save_path}"
-      cmd = "ffmpeg -i \"#{temp_path}\" -f mp3 -acodec libmp3lame -ab 128000 -ar 44100 -af afade=t=out:st=8:d=2,afade=t=in:st=0:d=2 \"#{save_path}\""
+      cmd = "ffmpeg -i \"#{temp_path}\" -f mp3 -acodec libmp3lame -ab 128000 -ar 44100 -af afade=t=out:st=18:d=2,afade=t=in:st=0:d=2 \"#{save_path}\""
       clip = `#{cmd}`
 
       File.delete temp_path
