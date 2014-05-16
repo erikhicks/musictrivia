@@ -5,7 +5,12 @@ window.Game = {}
 		name: 'Erik'
 	}
 
+	type = {
+
+	}
+
 	Game.init = ->
+		$('.user').html user.name
 		
 )()
 
