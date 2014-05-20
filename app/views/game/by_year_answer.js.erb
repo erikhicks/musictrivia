@@ -1,9 +1,10 @@
-$('.message').html("Here we go...");
+$('.message').html("Correct? " + "<%= @correct_answer.to_s %>");
 $('.game-content').html("<%= escape_javascript(render 'by_year_song') %>");
 $('.answer').html("<%= escape_javascript(render 'answer') %>");
 
 Game.state.year_chosen = <%= @year_chosen %>;
 Game.state.current_song = '<%= @current_song.url %>';
 Game.state.current_question = '<%= @current_question.uuid %>';
+Game.state.played_songs.push('<%= @current_song.clip %>');
 
 Game.start();

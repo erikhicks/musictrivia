@@ -1,3 +1,6 @@
-<%= form_tag(game_answer_path, method: :post, remote: true) do %>
-	<%= submit_tag("go") %>
+<%= form_tag(game_by_year_answer_path, method: :post, remote: true) do %>
+	<%= text_field_tag("answer") %>
+	<%= hidden_field_tag("question", @current_question.uuid) %>
+	<%= hidden_field_tag("year", @year_chosen) %>
+	<%= submit_tag("Answer") %>
 <% end %>

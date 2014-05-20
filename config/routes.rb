@@ -9,6 +9,7 @@ Musictrivia::Application.routes.draw do
   post 'game/answer' => 'game#answer'
   post 'game/start' => 'game#start'
   post 'game/by_year_start' => 'game#by_year_start'
+  post 'game/by_year_answer' => 'game#by_year_answer'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
